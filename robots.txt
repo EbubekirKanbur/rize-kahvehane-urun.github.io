@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ebubekirkanbur.github.io/rize-kahvehane-urun.github.io/sitemap.xml

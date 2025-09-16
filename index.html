@@ -1,0 +1,485 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Muzaffer Kut — Rize Kahvehane Malzemeleri | Tanıtım ve İletişim</title>
+<meta name="description" content="Rize’de kahvehane ve market malzemeleri: Ankun çay kazanı, okey-tavla, oyun kağıdı, masa örtüsü (40x150), Koza meyve tozları. Muzaffer Kut ile doğrudan iletişim." />
+<meta name="keywords" content="kahvehane malzemeleri, çay kazanı, Ankun çay kazanı, okey takımı, tavla, oyun kağıdı, masa örtüsü 140x150, masa kıskacı, yazboz, Koza meyve tozu, tek içimlik, dökme, Rize" />
+
+<!-- Güvenlik: Sıkı ama gerekli izinlerle CSP -->
+<meta http-equiv="Content-Security-Policy"
+      content="default-src 'self';
+               script-src 'self' 'unsafe-inline';
+               style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+               font-src https://fonts.gstatic.com;
+               img-src 'self' data:;
+               connect-src 'none';
+               frame-ancestors 'none';
+               base-uri 'self';
+               form-action 'self'">
+<meta name="referrer" content="no-referrer">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg:#f5f7f6;--card:#ffffff;--ink:#1f2937;--muted:#6b7280;--line:#e5e7eb;
+    --accent:#1a8249;--accent-weak:#e8f3ec;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink)}
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+  header{position:sticky;top:0;z-index:20;background:var(--accent-weak);border-bottom:1px solid var(--line)}
+  .nav{max-width:1100px;margin:auto;display:flex;justify-content:space-between;align-items:center;padding:12px 16px;gap:12px}
+  .brand{display:flex;align-items:center;gap:10px}
+  .brand img{width:36px;height:36px;border-radius:8px;object-fit:cover}
+  .btn{position:relative;display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:#fff;padding:8px 12px;border-radius:10px;font-weight:600;cursor:pointer;overflow:hidden}
+  .btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+  .btn .bar{position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--accent)}
+  .container{max-width:1100px;margin:auto;padding:18px}
+
+  /* HERO: görsel kaldırıldı, içerik tek sütun */
+  .hero{display:grid;grid-template-columns:1fr;gap:12px;align-items:center;margin:20px 0}
+  .hero h2{margin:0 0 6px;font-size:28px}
+  .hero p{margin:0;color:var(--muted)}
+  .toolbar{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}
+  .input{flex:1;min-width:260px;border:1px solid var(--line);background:#fff;border-radius:10px;display:flex;align-items:center;gap:8px;padding:10px 12px}
+  .input input{all:unset;width:100%}
+  .chip{border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 10px;cursor:pointer}
+  .chip[aria-pressed="true"]{border-color:var(--accent);color:var(--accent)}
+
+  h2.section{margin:8px 0 12px}
+
+  /* ÜRÜN KARTLARI — düzgün, tek oranlı vitrin (4:3) */
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;transition:transform .12s ease, box-shadow .12s ease}
+  .card:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(0,0,0,.06)}
+  .img-wrap{
+    background:#fff; border-bottom:1px solid var(--line);
+    aspect-ratio:4/3; display:grid; place-items:center; overflow:hidden;
+  }
+  .img-wrap img{
+    max-width:100%; max-height:100%;
+    width:auto; height:auto; object-fit:contain; image-rendering:auto;
+  }
+  .card-body{padding:12px}
+  .card h3{margin:0 0 4px}
+  .meta{font-size:12px;color:var(--muted)}
+  .price{margin-top:6px;font-weight:700;color:var(--accent)}
+
+  footer{margin-top:24px;border-top:1px solid var(--line);background:var(--accent-weak);color:#374151}
+  footer .inner{max-width:1100px;margin:auto;padding:14px 16px;text-align:center}
+
+  /* Detay ekranı */
+  #detail{position:fixed;inset:0;background:#ffffff;display:none;z-index:40}
+  #detail.show{display:block}
+  .detail-wrap{max-width:1050px;margin:auto;padding:16px}
+  .detail-top{display:flex;justify-content:space-between;align-items:center;gap:12px;border-bottom:1px solid var(--line);padding-bottom:10px}
+  .back{border:1px solid var(--line);background:#fff;border-radius:10px;padding:8px 12px;cursor:pointer}
+  .detail-main{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:14px}
+  @media (max-width:900px){.detail-main{grid-template-columns:1fr}}
+
+  /* Ana detay görseli - tek oran, taşma yok */
+  .detail-gallery #detailImg{
+    width:100%; aspect-ratio:4/3; object-fit:contain;
+    border-radius:12px; border:1px solid var(--line); background:#fff; display:block;
+  }
+  /* Küçük önizlemeler */
+  .thumbs{display:grid;grid-template-columns:repeat(auto-fit,minmax(90px,1fr));gap:8px;margin-top:8px}
+  .thumb{border:2px solid transparent;border-radius:10px;overflow:hidden;cursor:pointer;background:#fff;display:grid;place-items:center;aspect-ratio:1/1}
+  .thumb.active{border-color:var(--accent)}
+  .thumb img{max-width:100%;max-height:100%;object-fit:contain;display:block}
+
+  .detail-price{font-weight:800;color:var(--accent);margin-top:6px}
+  .detail-meta{color:var(--muted);font-size:14px;margin-top:4px}
+  .detail-desc{margin-top:10px;color:#374151}
+  .variants{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+  .pill{border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 10px;font-size:14px}
+</style>
+</head>
+<body>
+<header>
+  <div class="nav">
+    <div class="brand">
+      <img src="assets/logo.jpg" alt="Logo" onerror="this.src='assets/hero.jpg'">
+      <strong>Muzaffer Kut — Rize Kahvehane Malzemeleri</strong>
+    </div>
+    <div>
+      <a class="btn" href="#urunler">Ürünler</a>
+      <a class="btn primary" href="#iletisim">İletişim</a>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <section class="hero">
+    <div>
+      <h2>Ürünleri inceleyin, doğrudan iletişime geçin</h2>
+      <p>Bu site satış yapmaz, sadece <strong>tanıtım ve iletişim</strong> amaçlıdır.</p>
+      <div class="toolbar" role="search">
+        <label class="input" aria-label="Ürün ara">
+          <span>🔎</span>
+          <input id="search" type="search" placeholder="Ara: çay kazanı, okey, masa örtüsü…">
+        </label>
+        <button class="chip" data-filter="Hepsi" aria-pressed="true">Hepsi</button>
+        <button class="chip" data-filter="Çay Kazanı">Çay Kazanı</button>
+        <button class="chip" data-filter="Okey">Okey</button>
+        <button class="chip" data-filter="Tavla">Tavla</button>
+        <button class="chip" data-filter="Oyun Kağıdı">Oyun Kağıdı</button>
+        <button class="chip" data-filter="Masa Örtüsü">Masa Örtüsü</button>
+        <button class="chip" data-filter="Meyve Tozu">Meyve Tozu</button>
+        <button class="chip" data-filter="Kahve">Kahve</button>
+      </div>
+    </div>
+    <!-- hero resmi kaldırıldı -->
+  </section>
+
+  <section id="urunler">
+    <h2 class="section">Ürünler</h2>
+    <div class="grid" id="grid"></div>
+  </section>
+
+  <section id="iletisim" style="margin-top:24px">
+    <h2 class="section">İletişim</h2>
+    <p><strong>İşletme Sahibi:</strong> Muzaffer Kut</p>
+
+    <!-- Tıkla–Göster Telefon -->
+    <p><strong>Telefon:</strong>
+      <a id="phoneLink" class="btn" href="#" aria-label="Telefonu göster">Telefonu Göster</a>
+    </p>
+
+    <!-- WhatsApp: Basılı tut (hold) + insan etkileşimi + zaman koruması -->
+    <p><strong>WhatsApp:</strong>
+      <a id="waLink" class="btn" href="#" rel="nofollow noopener noreferrer" aria-label="WhatsApp ile mesaj gönder — butonu kısa süre basılı tut">
+        Mesaj Gönder
+        <span class="bar" aria-hidden="true"></span>
+      </a>
+    </p>
+
+    <p><strong>Şehir:</strong> Rize</p>
+
+    <!-- Mini KVKK notu -->
+    <p style="font-size:12px;color:#6b7280;margin-top:8px">
+      Bu site çerez kullanmaz. WhatsApp veya telefon üzerinden paylaştığınız bilgiler yalnızca geri dönüş sağlamak için kullanılır.
+    </p>
+  </section>
+</main>
+
+<footer>
+  <div class="inner">© <span id="year"></span> Muzaffer Kut — Rize Kahvehane Malzemeleri • Rize</div>
+</footer>
+
+<!-- Detay ekranı -->
+<section id="detail" aria-modal="true" role="dialog">
+  <div class="detail-wrap">
+    <div class="detail-top">
+      <button class="back" id="backBtn">← Geri</button>
+      <strong id="detailTitle"></strong>
+      <span></span>
+    </div>
+    <div class="detail-main">
+      <div class="detail-gallery">
+        <img id="detailImg" src="" alt="">
+        <div id="thumbs" class="thumbs"></div>
+      </div>
+      <div class="detail-info">
+        <div id="detailPrice" class="detail-price"></div>
+        <div id="detailMeta" class="detail-meta"></div>
+        <p id="detailDesc" class="detail-desc"></p>
+
+        <h3 style="margin:12px 0 6px">Çeşitler</h3>
+        <div id="variantList" class="variants"></div>
+
+        <div style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap">
+          <a class="btn primary" href="#iletisim">İletişime Geç</a>
+          <a class="btn" id="waDetail" href="#" rel="nofollow noopener noreferrer" aria-label="WhatsApp ile mesaj gönder — butonu kısa süre basılı tut">
+            WhatsApp
+            <span class="bar" aria-hidden="true"></span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // ---- Fiyat kuralları ----
+  const PRICE = {
+    cayKazan: '1 TL (sembolik)',
+    okey: '1.000–1.500 TL',
+    tavla: '800 TL',
+    oyunKagidi: '350 TL',
+    masaOrtu: '250 TL',
+    masaKiskaci: '100 TL',
+    yazboz: '15 TL',
+    tekIcimlik: '90 TL',
+    dokme: '50 TL',
+    kahve: '150'
+  };
+
+  // ---- Ürünler + çeşit görselleri ----
+  const PRODUCTS = [
+    { id:'cayk-ankun', name:'Ankun Çay Kazanı', category:'Çay Kazanı',
+      img:'assets/products/cay-kazani-bakir.webp', desc:'Dayanıklı gövde, geleneksel dem lezzeti.',
+      price: PRICE.cayKazan, variants:[ {name:'Bakır', img:'assets/products/cay-kazani-bakir.webp'}, {name:'Statik', img:'assets/products/cay-kazani-statik.jpeg'} ] },
+    { id:'okey', name:'Okey Takımları', category:'Okey',
+      img:'assets/products/okey-ahsap.jpg', desc:'Ahşap ve plastik seçenekler.',
+      price: PRICE.okey, variants:[ {name:'Ahşap', img:'assets/products/okey-ahsap.jpg'}, {name:'Plastik', img:'assets/products/okey-plastik.jpg'} ] },
+    { id:'tavla', name:'Tavla', category:'Tavla',
+      img:'assets/products/star_tavla.jpg', price: PRICE.tavla,
+      variants:[ {name:'Klasik', img:'assets/products/tavla.jpg'}, {img:'assets/products/star_tavla.jpg'} ] },
+    { id:'oyk', name:'Oyun Kağıtları', category:'Oyun Kağıdı',
+      img:'assets/products/ok-angora.jpg', desc:'Standart deste, farklı markalar.',
+      price: PRICE.oyunKagidi, variants:[
+        {name:'Angora', img:'assets/products/ok-angora.jpg'},
+        {name:'Kızılay', img:'assets/products/ok-kizilay.jpg'},
+        {name:'Perge', img:'assets/products/ok-perge.jpg'},
+        {name:'Hungary', img:'assets/products/ok-hungary.jpg'},
+        {name:'Horgün', img:'assets/products/ok-horgun.jpg'}
+      ] },
+    { id:'masa-ortu', name:'Masa Örtüsü 140×150', category:'Masa Örtüsü',
+      img:'assets/products/masa-ortu.jpg', desc:'Kahvehane tipi dayanıklı kumaş.',
+      price: PRICE.masaOrtu, variants:[ {name:'140×150', img:'assets/products/masa-ortu.jpg'}, {img:'assets/products/kahvehane-masa-ortu.jpg'} ] },
+    { id:'masa-kiskaci', name:'Masa Kıskacı', category:'Masa Örtüsü',
+      img:'assets/products/masa-kiskaci.jpg', desc:'Örtüyü sabitlemek için metal/plastik.',
+      price: PRICE.masaKiskaci, variants:[ {name:'Metal', img:'assets/products/masa-kiskaci.jpg'}, {name:'Plastik', img:'assets/products/masa-kiskaci.jpg'} ] },
+    { id:'yazboz', name:'Yazboz', category:'Masa Örtüsü',
+      img:'assets/products/yazboz.jpg', desc:'Silinebilir yüzey, pratik kullanım.',
+      price: PRICE.yazboz, variants:[ {name:'Standart', img:'assets/products/yazboz.jpg'} ] },
+    { id:'tekicim', name:'Tek İçimlik Meyve Tozu çeşitleri (50 adet)', category:'Meyve Tozu',
+      img:'assets/products/tekicim-portakal.jpg', desc:'Tek kullanımlık saşe içecek tozları.',
+      price: PRICE.tekIcimlik, variants:[
+        {name:'Portakal', img:'assets/products/tekicim-portakal.jpg'},
+        {name:'Limon', img:'assets/products/tekicim-limon.jpg'},
+        {name:'Kuşburnu', img:'assets/products/tekicim-kusburnu.jpg'},
+        {name:'Kivi', img:'assets/products/tekicim-kivi.jpg'},
+        {name:'Şeftali', img:'assets/products/tekicim-seftali.jpg'},
+        {name:'Karadut', img:'assets/products/tekicim-karadut.jpg'}
+      ] },
+    { id:'dokme', name:'Dökme Meyve Tozu çeşitleri (300 g)', category:'Meyve Tozu',
+      img:'assets/products/koza-portakal.jpg', desc:'300 g paketler; sahlep ve sütlü çeşitler dahil.',
+      price: PRICE.dokme, variants:[
+        {name:'Portakal', img:'assets/products/koza-portakal.jpg'},
+        {name:'Limon', img:'assets/products/koza-limon.jpg'},
+        {name:'Kuşburnu', img:'assets/products/koza-kusburnu.jpg'},
+        {name:'Karadut', img:'assets/products/koza-karadut.jpg'},
+        {name:'Kivi', img:'assets/products/koza-kivi.jpg'},
+        {name:'Çilek', img:'assets/products/koza-cilek.jpg'},
+        {name:'Elma', img:'assets/products/koza-elma.jpg'},
+        {name:'Nane Limon', img:'assets/products/koza-nane-limon.jpg'},
+        {name:'Sütlü Kakao', img:'assets/products/koza-kakao.jpg'},
+        {name:'Sütlü Muz', img:'assets/products/koza-muz.jpg'},
+        {name:'Sahlep', img:'assets/products/koza-sahlep.jpg'}
+      ] },
+    { id:'3u1', name:"Koza 3'ü 1 Arada 500 g", category:'Kahve',
+      img:'assets/products/koza-3u1.jpg', desc:'Pratik kahve karışımı.',
+      price: PRICE.kahve, variants:[ {name:'500 g', img:'assets/products/koza-3u1.jpg'} ] }
+  ];
+
+  // ---- Ana grid ----
+  const grid = document.getElementById('grid');
+  function cardTemplate(p){
+    return `
+      <article class="card" data-id="${p.id}">
+        <div class="img-wrap">
+          <img src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.src='assets/hero.jpg'">
+        </div>
+        <div class="card-body">
+          <h3>${p.name}</h3>
+          <div class="meta">Kategori: ${p.category}</div>
+          <div class="price">Fiyat: ${p.price}</div>
+        </div>
+      </article>`;
+  }
+  function render(list){ grid.innerHTML = list.map(cardTemplate).join(''); }
+  render(PRODUCTS);
+
+  // ---- Arama & filtre ----
+  const searchInput = document.getElementById('search');
+  const chips = Array.from(document.querySelectorAll('.chip'));
+  let activeFilter = 'Hepsi';
+  function applyFilters(){
+    const q = (searchInput.value||'').toLowerCase();
+    const filtered = PRODUCTS.filter(p=>{
+      const inCat = activeFilter==='Hepsi' || p.category===activeFilter;
+      const inText = !q || p.name.toLowerCase().includes(q) || p.desc?.toLowerCase().includes(q) || p.category.toLowerCase().includes(q);
+      return inCat && inText;
+    });
+    render(filtered);
+  }
+  searchInput.addEventListener('input', applyFilters);
+  chips.forEach(c=>c.addEventListener('click',()=>{
+    chips.forEach(x=>x.setAttribute('aria-pressed','false'));
+    c.setAttribute('aria-pressed','true');
+    activeFilter = c.dataset.filter;
+    applyFilters();
+  }));
+
+  // ---- Detay ekranı ----
+  const detail = document.getElementById('detail');
+  const backBtn = document.getElementById('backBtn');
+  const dTitle = document.getElementById('detailTitle');
+  const dImg = document.getElementById('detailImg');
+  const dPrice = document.getElementById('detailPrice');
+  const dMeta = document.getElementById('detailMeta');
+  const dDesc = document.getElementById('detailDesc');
+  const vList = document.getElementById('variantList');
+  const thumbs = document.getElementById('thumbs');
+
+  function openDetail(id){
+    const p = PRODUCTS.find(x=>x.id===id);
+    if(!p) return;
+    dTitle.textContent = p.name;
+    dImg.src = (p.variants && p.variants[0]?.img) || p.img;
+    dImg.alt = p.name;
+    dPrice.textContent = `Fiyat: ${p.price}`;
+    dMeta.textContent = `Kategori: ${p.category}`;
+    dDesc.textContent = p.desc || '';
+
+    // Çeşit etiketleri
+    vList.innerHTML = (p.variants||[]).map(v=>`<span class="pill">${v.name}</span>`).join('');
+
+    // Thumbnail’ler
+    thumbs.innerHTML = (p.variants||[]).map((v,i)=>`
+      <div class="thumb ${i===0?'active':''}" data-img="${v.img}">
+        <img src="${v.img}" alt="${v.name}" loading="lazy" onerror="this.src='assets/hero.jpg'">
+      </div>
+    `).join('');
+
+    // Thumb tıklayınca büyük görseli değiştir
+    thumbs.querySelectorAll('.thumb').forEach(th=>{
+      th.addEventListener('click', ()=>{
+        thumbs.querySelectorAll('.thumb').forEach(x=>x.classList.remove('active'));
+        th.classList.add('active');
+        dImg.src = th.dataset.img;
+      });
+    });
+
+    detail.classList.add('show');
+    window.location.hash = `#urun/${id}`;
+  }
+
+  function closeDetail(){
+    detail.classList.remove('show');
+    if(location.hash.startsWith('#urun/')) history.pushState('', document.title, window.location.pathname + window.location.search);
+  }
+
+  backBtn.addEventListener('click', closeDetail);
+  grid.addEventListener('click', (e)=>{
+    const card = e.target.closest('.card');
+    if(!card) return;
+    openDetail(card.dataset.id);
+  });
+
+  // Hash ile derin link
+  window.addEventListener('hashchange', ()=>{
+    const m = location.hash.match(/^#urun\/(.+)$/);
+    if(m){ openDetail(m[1]); } else { closeDetail(); }
+  });
+
+  // Yıl
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // --- Tıkla–Göster: Telefon (botlara karşı basit) ---
+  (function(){
+    const humanPhone = ['0532',' ','774',' ','83',' ','34'].join('');
+    const telHref = ['+90','532','774','83','34'].join('');
+    const phoneLink = document.getElementById('phoneLink');
+    if (phoneLink) {
+      phoneLink.addEventListener('click', function(e){
+        e.preventDefault();
+        this.textContent = humanPhone;
+        this.href = 'tel:' + telHref.replace(/\s/g,'');
+        this.setAttribute('rel','nofollow');
+      }, { once:true });
+    }
+  })();
+
+  // --- WhatsApp: "Basılı tut" + insan etkileşimi + min bekleme + dinamik link (API domain) ---
+  (function(){
+    const perfStart = performance.now();
+    let human = false;
+    ['mousemove','pointermove','keydown','scroll','touchstart'].forEach(ev=>{
+      window.addEventListener(ev, ()=>{ human = true; }, { once:true, passive:true });
+    });
+
+    // WhatsApp Web uyumlu URL: https://api.whatsapp.com/send?phone=905327748334&text=...
+    const API = atob('aHR0cHM6Ly9hcGkud2hhdHNhcHAuY29tL3NlbmQ/cGhvbmU9'); // base64 -> https://api.whatsapp.com/send?phone=
+    const PHONE = atob('OTA1MzI3NzQ4MzM0');                                   // base64 -> 905327748334
+    const AMP_TEXT = atob('JnRleHQ9');                                          // base64 -> &text=
+    const MSG = 'Merhaba Muzaffer Bey, ürünler hakkında bilgi almak istiyorum.';
+    const waHref = API + PHONE + AMP_TEXT + encodeURIComponent(MSG);
+
+    const holdMs = 900;     // basılı tutma süresi
+    const dwellMs = 1200;   // sayfada minimum bekleme
+    function guardWhatsApp(el){
+      if (!el) return;
+
+      const bar = el.querySelector('.bar') || (function(){
+        const s = document.createElement('span'); s.className = 'bar'; el.appendChild(s); return s;
+      })();
+
+      let holdTimer = null, start = 0, ready = false, keyTimer = null, keyStart = 0;
+
+      // tıklama hazır değilse varsayılan davranışı engelle
+      el.addEventListener('click', (e)=>{
+        if (!ready) e.preventDefault();
+      });
+
+      function arm(){
+        if (!ready && human && (performance.now() - perfStart) > dwellMs){
+          ready = true;
+          el.setAttribute('data-ready','1');
+          el.href = waHref;
+          el.setAttribute('target','_blank');
+          el.setAttribute('rel','nofollow noopener noreferrer');
+          el.textContent = 'Açmak için bırak';
+          // bar'ı tekrar ekle (textContent bar'ı sildi)
+          const s = document.createElement('span'); s.className='bar'; el.appendChild(s);
+        }
+      }
+      function resetBar(){ bar.style.width = '0%'; }
+
+      // Pointer (dokunma/fare) basılı tutma
+      el.addEventListener('pointerdown', ()=>{
+        start = performance.now();
+        holdTimer = setInterval(()=>{
+          const elapsed = performance.now() - start;
+          const pct = Math.min(100, Math.round(elapsed/holdMs*100));
+          bar.style.width = pct + '%';
+          if (elapsed >= holdMs){ clearInterval(holdTimer); arm(); }
+        }, 50);
+      });
+      ['pointerup','pointercancel','pointerleave'].forEach(ev=>{
+        el.addEventListener(ev, ()=>{ if (holdTimer){ clearInterval(holdTimer); } resetBar(); });
+      });
+
+      // Klavye (Space/Enter) basılı tutma — erişilebilirlik için
+      el.addEventListener('keydown', (e)=>{
+        if (e.code==='Space' || e.code==='Enter'){
+          e.preventDefault();
+          keyStart = performance.now();
+          keyTimer = setInterval(()=>{
+            const elapsed = performance.now() - keyStart;
+            const pct = Math.min(100, Math.round(elapsed/holdMs*100));
+            bar.style.width = pct + '%';
+            if (elapsed >= holdMs){ clearInterval(keyTimer); arm(); }
+          }, 50);
+        }
+      });
+      el.addEventListener('keyup', (e)=>{
+        if (e.code==='Space' || e.code==='Enter'){ if (keyTimer){ clearInterval(keyTimer); } resetBar(); }
+      });
+    }
+
+    guardWhatsApp(document.getElementById('waLink'));
+    guardWhatsApp(document.getElementById('waDetail'));
+  })();
+</script>
+</body>
+</html>
