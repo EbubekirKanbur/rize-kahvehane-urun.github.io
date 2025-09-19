@@ -171,7 +171,7 @@
 </main>
 
 <footer>
-  <div class="inner">© <span id="year"></span> Muzaffer Kut — Rize Kahvehane Malzemeleri • Rize</div>
+  <div class="inner">© <span id="year"></span> Muzaffer Kut — Rize Kafe ve Çay Ocağı Malzemeleri • Rize</div>
 </footer>
 
 <!-- Detay ekranı -->
@@ -211,11 +211,11 @@
   // ---- Fiyat kuralları ----
   const PRICE = {
     cayKazan: '1 TL (sembolik)',
-    okey: '1.000–1.500 TL',
+    okey: '1500-2000 TL',
     tavla: '800 TL',
     oyunKagidi: '350 TL',
-    masaOrtu: '250 TL',
-    masaKiskaci: '100 TL',
+    masaOrtu: '300 TL',
+    masaKiskaci: '30 TL',
     yazboz: '15 TL',
     tekIcimlik: '90 TL',
     dokme: '50 TL',
@@ -227,12 +227,6 @@
     { id:'cayk-ankun', name:'Ankun Çay Kazanı', category:'Çay Kazanı',
       img:'assets/products/cay-kazani-bakir.webp', desc:'Dayanıklı gövde, geleneksel dem lezzeti.',
       price: PRICE.cayKazan, variants:[ {name:'Bakır', img:'assets/products/cay-kazani-bakir.webp'}, {name:'Statik', img:'assets/products/cay-kazani-statik.jpeg'} ] },
-    { id:'okey', name:'Okey Takımları', category:'Okey',
-      img:'assets/products/okey-ahsap.jpg', desc:'Ahşap ve plastik seçenekler.',
-      price: PRICE.okey, variants:[ {name:'Ahşap', img:'assets/products/okey-ahsap.jpg'}, {name:'Plastik', img:'assets/products/okey-plastik.jpg'} ] },
-    { id:'tavla', name:'Tavla', category:'Tavla',
-      img:'assets/products/star_tavla.jpg', price: PRICE.tavla,
-      variants:[ {name:'Klasik', img:'assets/products/tavla.jpg'}, {img:'assets/products/star_tavla.jpg'} ] },
     { id:'oyk', name:'Oyun Kağıtları', category:'Oyun Kağıdı',
       img:'assets/products/ok-angora.jpg', desc:'Standart deste, farklı markalar.',
       price: PRICE.oyunKagidi, variants:[
@@ -242,6 +236,13 @@
         {name:'Hungary', img:'assets/products/ok-hungary.jpg'},
         {name:'Horgün', img:'assets/products/ok-horgun.jpg'}
       ] },
+    { id:'okey', name:'Okey Takımları', category:'Okey',
+      img:'assets/products/okey-ahsap.jpg', desc:'Ahşap ve plastik seçenekler.',
+      price: PRICE.okey, variants:[ {name:'Ahşap', img:'assets/products/okey-ahsap.jpg'}, {name:'Plastik', img:'assets/products/okey-plastik.jpg'} ] },
+    { id:'tavla', name:'Tavla', category:'Tavla',
+      img:'assets/products/star_tavla.jpg', price: PRICE.tavla,
+      variants:[ {name:'Klasik', img:'assets/products/tavla.jpg'}, {img:'assets/products/star_tavla.jpg'} ] },
+    
     { id:'masa-ortu', name:'Masa Örtüsü 140×150', category:'Masa Örtüsü',
       img:'assets/products/masa-ortu.jpg', desc:'Kahvehane tipi dayanıklı kumaş.',
       price: PRICE.masaOrtu, variants:[ {name:'140×150', img:'assets/products/masa-ortu.jpg'}, {img:'assets/products/kahvehane-masa-ortu.jpg'} ] },
